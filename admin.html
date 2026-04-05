@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        h1 {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+        }
+
+        table {
+            margin: auto;
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Admin Dashboard 🚧</h1>
+
+<a href="/analytics">📊 View Analytics</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Issue</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+
+        <td>
+            <img src="{{ url_for('static', filename='uploads/' + row[1]) }}" width="100">
+        </td>
+
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+
+        <td>
+            {% if row[4] == "Pending" %}
+                <span style="color:red;">Pending</span>
+            {% else %}
+                <span style="color:green;">Resolved</span>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if row[4] == "Pending" %}
+                <a href="/update_status/{{ row[0] }}">
+                    <button>Mark Resolved</button>
+                </a>
+            {% else %}
+                ✔
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

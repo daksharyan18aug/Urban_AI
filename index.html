@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban AI Reporter</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        form {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        input {
+            margin: 10px;
+        }
+
+        button {
+            background-color: #4facfe;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007bff;
+        }
+
+        a {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Urban AI Problem Reporter 🚧</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" required><br>
+    <button type="submit">Upload Issue</button>
+</form>
+
+<br><br>
+<a href="/admin">Go to Admin Dashboard</a>
+
+</body>
+</html>

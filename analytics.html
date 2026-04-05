@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>Analytics Dashboard </h1>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+    // 🔥 Pass values from Flask safely
+    const potholeCount = {{ pothole | tojson }};
+    const garbageCount = {{ garbage | tojson }};
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Pothole', 'Garbage'],
+            datasets: [{
+                label: 'Number of Complaints',
+                data: [potholeCount, garbageCount],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
